@@ -2,6 +2,7 @@ using Godot;
 using System.Diagnostics;
 using ChampionsOfAshenveil.Engine;
 using ChampionsOfAshenveil.Sim;
+using ChampionsOfAshenveil.Engine.Items;
 
 namespace ChampionsOfAshenveil.UI;
 
@@ -23,6 +24,7 @@ public partial class BattleScene : Control
     private HeroProgressionPanel? _progressionPanel;
     private VBoxContainer? _actionPanel;
     private Button?        _btnEndTurn;
+    private ItemHandPanel? _itemHand;
     private Panel?         _victoryOverlay;
     private Label?         _victoryLabel;
 
@@ -66,6 +68,9 @@ public partial class BattleScene : Control
             ApplyActionAndRefresh(new UpgradeAbilityAction(HumanPlayerId, heroId, abilityId));
         _actionPanel    = GetNode<VBoxContainer>("ActionPanel");
         _btnEndTurn     = GetNode<Button>("ActionPanel/BtnEndTurn");
+        _itemHand       = GetNode<ItemHandPanel>("ActionPanel/ItemHandPanel");
+        _itemHand.PlayRequested += (itemId, targetId) =>
+            ApplyActionAndRefresh(new PlayCardAction(HumanPlayerId, itemId, targetId));
         _victoryOverlay = GetNode<Panel>("VictoryOverlay");
         _victoryLabel   = GetNode<Label>("VictoryOverlay/VBox/VictoryLabel");
 
@@ -83,8 +88,7 @@ public partial class BattleScene : Control
         _botRng = new SeededRng(seed ^ 0xABCDEF);
         var heroIds = gm.Data.Heroes.Keys.OrderBy(id => id).ToList();
         List<string> Team(string chosen) => new[] { chosen }.Concat(heroIds.Where(id => id != chosen).Take(2)).ToList();
-        var deck = gm.Data.Items.Values.Where(i => i.StatBonuses.Count > 0).OrderBy(i => i.Cost)
-            .Take(10).SelectMany(i => new[] { i.Id, i.Id }).ToList();
+        var deck = PrototypeItemDeck.Build(gm.Data);
 
         var config = new MatchConfig
         {
@@ -231,23 +235,8 @@ public partial class BattleScene : Control
         if (_gameState is null) return;
         _btnEndTurn!.Disabled = _gameState.IsGameOver;
         _btnEndTurn!.Text     = _gameState.ActivePlayer == HumanPlayerId ? "End Turn →" : "⏳ Enemy thinking...";
-        foreach (Node node in _actionPanel!.GetChildren())
-            if (node.Name.ToString().StartsWith("Card_")) node.QueueFree();
-        var player = _gameState.GetPlayer(HumanPlayerId);
-        if (_gameState.ActivePlayer != HumanPlayerId) return;
-        int index = 0;
-        foreach (var cardId in player.Hand)
-        {
-            var item = GameManager.Instance.Data.Items.GetValueOrDefault(cardId);
-            if (item is null) continue;
-            var target = player.Heroes.FirstOrDefault(h => h.ItemIds.Count < 2);
-            var button = new Button { Name = $"Card_{index++}", Text = $"{item.Name} ({item.Cost}g) → {target?.DefinitionId ?? "no slot"}",
-                Disabled = target is null || player.Gold < item.Cost || player.CardsPlayedThisTurn >= 2 };
-            string capturedCard = cardId;
-            string? capturedTarget = target?.Id;
-            button.Pressed += () => { if (capturedTarget is not null) ApplyActionAndRefresh(new PlayCardAction(HumanPlayerId, capturedCard, capturedTarget)); };
-            _actionPanel.AddChild(button);
-        }
+        _itemHand!.Render(_gameState, HumanPlayerId, GameManager.Instance.Data,
+            _gameState.ActivePlayer == HumanPlayerId && !_gameState.IsGameOver);
     }
 
     // ─── Actions ─────────────────────────────────────────────────────────────
@@ -366,6 +355,13 @@ public partial class BattleScene : Control
             ApplyActionAndRefresh(action);
         }
 
+        for (int i = 0; i < 2 && !_gameState.IsGameOver; i++)
+        {
+            var card = ItemCardBot.Choose(_gameState, GameManager.Instance.Data);
+            if (card is null) break;
+            ApplyActionAndRefresh(card);
+        }
+
         // Bot ends its own turn
         if (!_gameState.IsGameOver)
         {
@@ -422,6 +418,8 @@ public partial class BattleScene : Control
         DamageEvent d   when d.WasLethal  => $"[color=red]💀 {Esc(d.Description)}[/color]",
         DamageEvent d                    => $"[color=tomato]{Esc(d.Description)}[/color]",
         HealEvent h                      => $"[color=lime]{Esc(h.Description)}[/color]",
+        EnergyRestoredEvent er           => $"[color=aquamarine]{Esc(er.Description)}[/color]",
+        CardPlayedEvent cp               => $"[color=yellow]{Esc(cp.Description)}[/color]",
         AbilityUsedEvent a               => $"[color=aquamarine]✨ {Esc(a.Description)}[/color]",
         EffectAppliedEvent ef            => $"[color=plum]{Esc(ef.Description)}[/color]",
         EffectExpiredEvent ex            => $"[color=gray]{Esc(ex.Description)}[/color]",

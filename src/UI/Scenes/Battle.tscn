@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://battle_scene"]
+[gd_scene load_steps=5 format=3 uid="uid://battle_scene"]
 
 [ext_resource type="Script" path="res://src/UI/BattleScene.cs" id="1"]
 [ext_resource type="PackedScene" path="res://src/UI/Scenes/CreepLane.tscn" id="2"]
 [ext_resource type="PackedScene" path="res://src/UI/Scenes/HeroProgressionPanel.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://src/UI/Scenes/ItemHandPanel.tscn" id="4"]
 
 [node name="Root" type="Control"]
 layout_mode = 3
@@ -73,12 +74,14 @@ theme_override_constants/separation = 6
 layout_mode = 1
 offset_top = 584
 offset_right = 400
-offset_bottom = 680
+offset_bottom = 720
 theme_override_constants/separation = 4
 
 [node name="BtnEndTurn" type="Button" parent="ActionPanel"]
 text = "End Turn →"
 custom_minimum_size = Vector2(200, 40)
+
+[node name="ItemHandPanel" parent="ActionPanel" instance=ExtResource("4")]
 
 [node name="BottomPanel" type="Panel" parent="."]
 layout_mode = 1

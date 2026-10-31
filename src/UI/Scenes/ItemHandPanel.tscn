@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/UI/ItemHandPanel.cs" id="1"]
+
+[node name="ItemHandPanel" type="VBoxContainer"]
+script = ExtResource("1")
+custom_minimum_size = Vector2(390, 90)
+
+[node name="HandScroll" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(390, 42)
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 3
+
+[node name="Hand" type="HBoxContainer" parent="HandScroll"]
+
+[node name="TargetScroll" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(390, 42)
+horizontal_scroll_mode = 1
+vertical_scroll_mode = 3
+
+[node name="Targets" type="HBoxContainer" parent="TargetScroll"]

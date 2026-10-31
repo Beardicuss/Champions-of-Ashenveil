@@ -118,6 +118,9 @@ public class EffectDefinition
     [JsonPropertyName("name")]           public string Name           { get; set; } = "";
     [JsonPropertyName("status_flags")]   public List<string> StatusFlags { get; set; } = [];
     [JsonPropertyName("damage_per_turn")] public float DamagePerTurn { get; set; }
+    [JsonPropertyName("total_healing")]   public int TotalHealing { get; set; }
+    [JsonPropertyName("total_energy_restore")] public int TotalEnergyRestore { get; set; }
+    [JsonPropertyName("interrupt_on_hero_damage")] public bool InterruptOnHeroDamage { get; set; }
     [JsonPropertyName("damage_type")]    public string DamageType     { get; set; } = "magic";
     [JsonPropertyName("duration_turns")] public int DurationTurns    { get; set; }
     [JsonPropertyName("can_stack")]      public bool CanStack         { get; set; }
@@ -135,6 +138,8 @@ public class ItemDefinition
     [JsonPropertyName("name")]        public string Name        { get; set; } = "";
     [JsonPropertyName("source")]      public SourceInfo Source  { get; set; } = new();
     [JsonPropertyName("cost")]        public int Cost           { get; set; }
+    [JsonPropertyName("card_type")]   public string CardType { get; set; } = "equipment";
+    [JsonPropertyName("use_effect_id")] public string UseEffectId { get; set; } = "";
     [JsonPropertyName("stat_bonuses")] public Dictionary<string, float> StatBonuses { get; set; } = [];
     [JsonPropertyName("ability_ids")] public List<string> AbilityIds { get; set; } = [];
     [JsonPropertyName("notes")]       public string Notes       { get; set; } = "";

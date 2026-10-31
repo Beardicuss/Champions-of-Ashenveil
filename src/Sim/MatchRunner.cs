@@ -45,7 +45,7 @@ public class MatchRunner
 
         while (!state.IsGameOver && state.TurnNumber <= MaxTurns)
         {
-            // Each living Hero may act once. The bot also equips affordable cards.
+            // Each living Hero may act once; item decisions use a separate policy.
             int active = state.ActivePlayer;
             for (int i = 0; i < 18; i++)
             {
@@ -65,13 +65,9 @@ public class MatchRunner
             }
             for (int i = 0; i < 2 && !state.IsGameOver; i++)
             {
-                var player = state.GetPlayer(active);
-                var target = player.Heroes.FirstOrDefault(h => h.ItemIds.Count < 2);
-                var card = player.Hand.Select(id => _data.Items.GetValueOrDefault(id))
-                    .Where(item => item is not null && item.StatBonuses.Count > 0 && item.Cost <= player.Gold)
-                    .OrderBy(item => item!.Cost).FirstOrDefault();
-                if (target is null || card is null) break;
-                var result = _engine.Apply(state, new PlayCardAction(active, card.Id, target.Id));
+                var action = ItemCardBot.Choose(state, _data);
+                if (action is null) break;
+                var result = _engine.Apply(state, action);
                 state = result.NewState;
                 CollectEvents(result.Events, state.TurnNumber);
             }

@@ -80,3 +80,6 @@ public record HeroLeveledEvent(int Turn, string Description, string HeroId, int 
 
 public record AbilityUpgradedEvent(int Turn, string Description, string HeroId, string AbilityId, int Rank)
     : GameEvent(Turn, Description);
+
+public record EnergyRestoredEvent(int Turn, string Description, string TargetId, int Amount)
+    : GameEvent(Turn, Description);

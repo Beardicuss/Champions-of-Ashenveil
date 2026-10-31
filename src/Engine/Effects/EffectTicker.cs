@@ -14,6 +14,7 @@ public static class EffectTicker
         var events    = new List<GameEvent>();
         var remaining = new List<ActiveEffect>();
         int newHp     = target.CurrentHp;
+        int newEnergy = target.CurrentEnergy;
 
         foreach (var ae in target.Effects)
         {
@@ -40,6 +41,27 @@ public static class EffectTicker
                     events.Add(new UnitDiedEvent(turn, $"{target.Id} died from {def.Name}.", target.Id, target.PlayerId));
             }
 
+            if (def is not null && newHp > 0 && def.DurationTurns > 0)
+            {
+                int elapsed = Math.Clamp(def.DurationTurns - ae.TurnsRemaining, 0, def.DurationTurns);
+                if (def.TotalHealing > 0)
+                {
+                    int scheduled = DistributedAmount(def.TotalHealing, def.DurationTurns, elapsed);
+                    int healed = Math.Min(scheduled, target.MaxHp - newHp);
+                    newHp += healed;
+                    if (healed > 0)
+                        events.Add(new HealEvent(turn, $"{target.Id} heals {healed} from {def.Name}.", ae.SourceUnitId, target.Id, healed));
+                }
+                if (def.TotalEnergyRestore > 0)
+                {
+                    int scheduled = DistributedAmount(def.TotalEnergyRestore, def.DurationTurns, elapsed);
+                    int restored = Math.Min(scheduled, target.MaxEnergy - newEnergy);
+                    newEnergy += restored;
+                    if (restored > 0)
+                        events.Add(new EnergyRestoredEvent(turn, $"{target.Id} restores {restored} energy from {def.Name}.", target.Id, restored));
+                }
+            }
+
             int turnsLeft = ae.TurnsRemaining - 1;
             if (turnsLeft > 0)
                 remaining.Add(ae with { TurnsRemaining = turnsLeft });
@@ -47,6 +69,9 @@ public static class EffectTicker
                 events.Add(new EffectExpiredEvent(turn, $"{ae.EffectId} expired on {target.Id}.", target.Id, ae.EffectId));
         }
 
-        return (target with { CurrentHp = Math.Max(0, newHp), Effects = remaining }, events);
+        return (target with { CurrentHp = Math.Max(0, newHp), CurrentEnergy = newEnergy, Effects = remaining }, events);
     }
+
+    private static int DistributedAmount(int total, int duration, int elapsed) =>
+        total * (elapsed + 1) / duration - total * elapsed / duration;
 }

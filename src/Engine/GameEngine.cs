@@ -66,12 +66,13 @@ public class GameEngine
         {
             AttackAction     a => HandleAttack(state, a, events),
             UseAbilityAction a => HandleAbility(state, a, events),
-            PlayCardAction   a => HandlePlayCard(state, a, events),
+            PlayCardAction   a => ItemCardPlay.Apply(state, a, _data, events),
             ChangeRowAction  a => HandleChangeRow(state, a, events),
             PassAction       a => HandlePass(state, a, events),
             UpgradeAbilityAction a => HandleUpgradeAbility(state, a, events),
             _ => state
         };
+        newState = InterruptedEffects.AfterDamage(state, newState, _data, events);
         newState = FarmingRewards.Apply(state, newState, events);
 
         // 12. Victory check
@@ -250,30 +251,6 @@ public class GameEngine
         // 11: Set cooldown
         newState = SetCooldown(newState, action.CasterId, action.AbilityId, events);
         return newState;
-    }
-
-    private GameState HandlePlayCard(GameState state, PlayCardAction action, List<GameEvent> events)
-    {
-        var player = state.GetPlayer(action.PlayerId);
-        var hero = action.TargetId is null ? null : state.FindUnit(action.TargetId);
-        if (player.CardsPlayedThisTurn >= 2 || !player.Hand.Contains(action.CardId) ||
-            !_data.Items.TryGetValue(action.CardId, out var item) || hero is null || !hero.IsHero ||
-            hero.PlayerId != action.PlayerId || hero.IsDead || hero.ItemIds.Count >= 2 || player.Gold < item.Cost)
-        {
-            events.Add(new InvalidActionEvent(state.TurnNumber, "Card play invalid.", "Hand, target, slot, gold, or card limit."));
-            return state;
-        }
-        var updated = StateUtils.UpdateUnit(state, ItemApplicator.Apply(hero, item));
-        var nextHand = player.Hand.ToList();
-        nextHand.Remove(action.CardId);
-        updated = updated with { Players = updated.Players.Select(p => p.PlayerId == action.PlayerId
-            ? p with { Gold = p.Gold - item.Cost, GoldSpent = p.GoldSpent + item.Cost,
-                CardsPlayed = p.CardsPlayed + 1, CardsPlayedThisTurn = p.CardsPlayedThisTurn + 1,
-                Hand = nextHand, DiscardPile = [.. p.DiscardPile, action.CardId] }
-            : p).ToList() };
-        events.Add(new GoldEvent(state.TurnNumber, $"Player {action.PlayerId} spends {item.Cost} gold.", action.PlayerId, item.Cost, true));
-        events.Add(new CardPlayedEvent(state.TurnNumber, $"{hero.Id} equips {item.Name}.", action.PlayerId, action.CardId, hero.Id));
-        return updated;
     }
 
     private GameState HandleUpgradeAbility(GameState state, UpgradeAbilityAction action, List<GameEvent> events)

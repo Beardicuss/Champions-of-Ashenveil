@@ -1,6 +1,7 @@
 using Godot;
 using ChampionsOfAshenveil.UI;
 using ChampionsOfAshenveil.Engine;
+using ChampionsOfAshenveil.Engine.Items;
 
 namespace ChampionsOfAshenveil;
 
@@ -28,8 +29,7 @@ public partial class MainScene : Control
     {
         var data = GameManager.Instance.Data;
         var ids = data.Heroes.Keys.OrderBy(id => id).ToList();
-        var deck = data.Items.Values.Where(i => i.StatBonuses.Count > 0).OrderBy(i => i.Cost)
-            .Take(10).SelectMany(i => new[] { i.Id, i.Id }).ToList();
+        var deck = PrototypeItemDeck.Build(data);
         const int count = 100;
         var results = new List<ChampionsOfAshenveil.Sim.MatchResult>();
         for (int i = 0; i < count; i++)
@@ -47,6 +47,7 @@ public partial class MainScene : Control
             $"P1 wins {results.Count(r => r.WinnerId == 1)}, draws {results.Count(r => r.WinnerId < 0)}; " +
             $"avg {results.Average(r => r.TurnCount):F1} rounds, {results.Average(r => r.WallTimeSeconds):F3}s simulation; " +
             $"avg cards {results.Average(r => r.PlayerStats.Sum(p => p.CardsPlayed)):F1}, " +
+            $"potions {results.Average(r => r.EventLog.OfType<CardPlayedEvent>().Count(e => e.CardId is "health_potion" or "mana_potion")):F1}, " +
             $"gold earned {results.Average(r => r.PlayerStats.Sum(p => p.GoldEarned)):F0}, " +
             $"spent {results.Average(r => r.PlayerStats.Sum(p => p.GoldSpent)):F0}; " +
             $"creep last hits {results.Average(r => r.PlayerStats.Sum(p => p.CreepKills)):F1}, " +
