@@ -1,0 +1,15 @@
+{
+  "id": "rotten_grasp_armor_reduction",
+  "name": "Rotten Grasp — Armor Sap",
+  "source": { "hon_id": "State applied by Gadget_Deadwood_Ability1", "version": "Reborn", "status": "verified" },
+  "status_flags": [],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 1,
+  "can_stack": false,
+  "refreshes": false,
+  "dispellable": true,
+  "immune_flags": [],
+  "armor_modifier": -1,
+  "notes": "Reduces target armor by -1/-2/-3/-4 per level. In engine: armor_modifier field applied to effective armor during damage calculations. Duration matches root (1-2 turns depending on level). Schema note: armor_modifier is an extension field not in base EffectDefinition — needs engine support in Phase 2 pass."
+}

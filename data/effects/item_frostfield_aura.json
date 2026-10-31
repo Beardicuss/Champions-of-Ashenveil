@@ -1,0 +1,1 @@
+{"id":"item_frostfield_aura","name":"Frostfield Slow Aura","source":{"hon_id":"Item_FrostfieldPlate_Aura","version":"Reborn","status":"verified"},"status_flags":["Slowed"],"damage_per_turn":0,"damage_type":"Physical","duration_turns":1,"can_stack":false,"refreshes":true,"dispellable":true,"immune_flags":[],"notes":"Applied to enemies who attack Frostfield bearer. Slow 1 turn."}

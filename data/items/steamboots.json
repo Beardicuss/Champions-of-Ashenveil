@@ -1,0 +1,1 @@
+{"id":"steamboots","name":"Steam Boots","source":{"hon_id":"Item_SteamBoots","version":"Reborn","status":"verified"},"cost":500,"stat_bonuses":{"bonus_damage":3,"bonus_armor":3,"bonus_hp":75},"ability_ids":[],"notes":"+3 damage, +3 armor, +75 HP."}

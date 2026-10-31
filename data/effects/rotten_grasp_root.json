@@ -1,0 +1,14 @@
+{
+  "id": "rotten_grasp_root",
+  "name": "Rotten Grasp",
+  "source": { "hon_id": "State applied by Gadget_Deadwood_Ability1", "version": "Reborn", "status": "verified" },
+  "status_flags": ["Immobilized", "DoT"],
+  "damage_per_turn": 100,
+  "damage_type": "Physical",
+  "duration_turns": 1,
+  "can_stack": false,
+  "refreshes": false,
+  "dispellable": true,
+  "immune_flags": [],
+  "notes": "Level-1 value. Higher levels: 150/200/250 damage, 1-2 turns duration (1.5s-3s / T=5s, ceil). Immobilize prevents row changes. DoT ticks at turn start."
+}

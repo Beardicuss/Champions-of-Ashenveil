@@ -1,0 +1,1 @@
+{"id":"item_nullfire_burn","name":"Nullfire Mana Burn","source":{"hon_id":"Item_NullfireBlade_Burn","version":"Reborn","status":"verified"},"status_flags":[],"damage_per_turn":0,"damage_type":"Magic","duration_turns":1,"can_stack":false,"refreshes":false,"dispellable":true,"immune_flags":[],"notes":"Burns 40 energy from target on hit. Phase 2: energy drain mechanic."}

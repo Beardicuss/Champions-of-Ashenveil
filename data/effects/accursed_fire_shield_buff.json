@@ -1,0 +1,18 @@
+{
+  "id": "accursed_fire_shield_buff",
+  "name": "Fire Shield",
+  "source": { "hon_id": "State_Accursed_Ability2", "version": "Reborn", "status": "verified" },
+  "status_flags": ["Shield"],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 3,
+  "can_stack": false,
+  "refreshes": true,
+  "dispellable": false,
+  "immune_flags": [],
+  "shield_hp": 110,
+  "explodes_on_break": true,
+  "explosion_damage": 110,
+  "explosion_damage_type": "Magic",
+  "notes": "Shield absorbs up to 110/140/170/200 HP of incoming damage (level-1 values used). Duration 15s → ceil(15/5) = 3 turns. Dispellable=false (it is a buff on ally). If shield HP reaches 0 before duration: explosion deals 110-200 Magic damage to all enemies in opposite row. In engine: Shield flag causes damage to reduce shield_hp first; when shield_hp=0, trigger explosion event. explodes_on_break and shield_hp are extension fields."
+}

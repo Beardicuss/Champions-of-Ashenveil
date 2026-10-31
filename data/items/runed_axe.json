@@ -1,0 +1,1 @@
+{"id":"runed_axe","name":"Runed Axe","source":{"hon_id":"Item_RunedAxe","version":"Reborn","status":"verified"},"cost":1600,"stat_bonuses":{"bonus_damage":35,"bonus_hp":100},"ability_ids":["item_runed_axe_passive"],"notes":"+35 damage, +100 HP. On-attack armor reduction 2 for 1 turn."}

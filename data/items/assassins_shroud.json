@@ -1,0 +1,1 @@
+{"id":"assassins_shroud","name":"Assassins Shroud","source":{"hon_id":"Item_AssassinShroud","version":"Reborn","status":"verified"},"cost":1750,"stat_bonuses":{"bonus_damage":40},"ability_ids":["item_assassins_shroud_active"],"notes":"+40 damage. Active: Stealth 1 turn. Breaks on attack."}

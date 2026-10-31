@@ -1,0 +1,1 @@
+{"id":"frostfield_plate","name":"Frostfield Plate","source":{"hon_id":"Item_FrostfieldPlate","version":"Reborn","status":"verified"},"cost":2100,"stat_bonuses":{"bonus_armor":10,"bonus_hp":200},"ability_ids":["item_frostfield_aura"],"notes":"+10 armor, +200 HP. Aura: attackers are Slowed 1 turn."}

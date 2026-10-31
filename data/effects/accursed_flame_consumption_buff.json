@@ -1,0 +1,15 @@
+{
+  "id": "accursed_flame_consumption_buff",
+  "name": "Protective Flames",
+  "source": { "hon_id": "State_Accursed_Ability4", "version": "Reborn", "status": "verified" },
+  "status_flags": [],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 1,
+  "can_stack": false,
+  "refreshes": false,
+  "dispellable": false,
+  "immune_flags": [],
+  "damage_to_heal_pct": 100,
+  "notes": "3/4/5s → ceil(3/5) = 1 turn. Converts 100% of all damage taken into healing for duration. Dispellable=false — this is his ultimate protective state. In engine: when this effect is active, every DamageEvent targeting Accursed is converted to a HealEvent instead. BALANCE RISK HIGH: effectively makes Accursed invulnerable + gaining HP equal to all attacks received for 1 full turn. damage_to_heal_pct is extension field."
+}

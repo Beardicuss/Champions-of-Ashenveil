@@ -1,0 +1,1 @@
+{"id":"thunder_claws","name":"Thunder Claws","source":{"hon_id":"Item_ThunderClaws","version":"Reborn","status":"verified"},"cost":2200,"stat_bonuses":{"bonus_damage":25},"ability_ids":["item_thunder_claws_chain"],"notes":"+25 damage. Chain lightning on attack (50% magic, 2 bounce). Phase 2."}

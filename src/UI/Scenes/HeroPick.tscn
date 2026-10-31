@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://hero_pick"]
+
+[ext_resource type="Script" path="res://src/UI/HeroPickScene.cs" id="1"]
+
+[node name="Root" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500
+offset_top = -300
+offset_right = 500
+offset_bottom = 300
+alignment = 1
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="VBox"]
+text = "Choose Your Hero"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28
+
+[node name="P0Row" type="VBoxContainer" parent="VBox"]
+theme_override_constants/separation = 6
+
+[node name="P0Label" type="Label" parent="VBox/P0Row"]
+text = "Player 1: (select below)"
+theme_override_font_sizes/font_size = 16
+modulate = Color(0.5, 1.0, 0.5, 1)
+
+[node name="P0Grid" type="HBoxContainer" parent="VBox/P0Row"]
+theme_override_constants/separation = 8
+
+[node name="HSep" type="HSeparator" parent="VBox"]
+custom_minimum_size = Vector2(0, 10)
+
+[node name="P1Row" type="VBoxContainer" parent="VBox"]
+theme_override_constants/separation = 6
+
+[node name="P1Label" type="Label" parent="VBox/P1Row"]
+text = "Player 2 (Bot): (select below)"
+theme_override_font_sizes/font_size = 16
+modulate = Color(1.0, 0.4, 0.4, 1)
+
+[node name="P1Grid" type="HBoxContainer" parent="VBox/P1Row"]
+theme_override_constants/separation = 8
+
+[node name="HSep2" type="HSeparator" parent="VBox"]
+custom_minimum_size = Vector2(0, 14)
+
+[node name="BtnStart" type="Button" parent="VBox"]
+text = "▶  Start Battle"
+custom_minimum_size = Vector2(240, 52)

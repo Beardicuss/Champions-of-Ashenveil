@@ -1,0 +1,34 @@
+{
+  "id": "deadwood_clearcutting",
+  "name": "Clearcutting",
+  "description": "Deadwood activates a burst of movement, gaining bonus speed. In the card game this is adapted as a row-repositioning ability with a speed/mobility buff.",
+  "source": {
+    "hon_id": "Ability_Deadwood3",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "From hon_reborn_slice.json. Self-cast, instant (casttime=0). Applies State_Deadwood_Ability3 for 10s granting treewalking + movespeed 30/45/60/75. No mana cost originally stated as 50. In card game: movement/row relevance only, treewalking has no analogue."
+  },
+  "original": {
+    "cooldown_ms": 15000,
+    "mana_cost": 50,
+    "damage": null,
+    "cast_range": null,
+    "radius": null,
+    "duration_ms": 10000,
+    "max_level": 4,
+    "notes_per_level": {
+      "move_speed_bonus": [30, 45, 60, 75],
+      "slow_resistance_pct": [25, 50, 75, 100],
+      "required_level": [1, 3, 5, 7]
+    }
+  },
+  "adapted": {
+    "cooldown_turns": 3,
+    "energy_cost": 50,
+    "damage": 0,
+    "duration_turns": 2,
+    "targeting": "self",
+    "adaptation_reason": "Cooldown: ceil(15s / 5s) = 3 turns. Duration: ceil(10s / 5s) = 2 turns. Movement speed has no direct analogue in the row model; adapted as: free row change this turn + immunity to Slow for duration. The treewalking and tree destruction effects have no card-game mapping and are noted as dropped — balance risk: ability may be weaker than original. Test scenario F."
+  },
+  "effects": ["deadwood_clearcut_mobility"]
+}

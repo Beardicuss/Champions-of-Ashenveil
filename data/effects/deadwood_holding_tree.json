@@ -1,0 +1,16 @@
+{
+  "id": "deadwood_holding_tree",
+  "name": "Holding Tree",
+  "source": { "hon_id": "State_Deadwood_Ability2", "version": "Reborn", "status": "verified" },
+  "status_flags": [],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 4,
+  "can_stack": false,
+  "refreshes": true,
+  "dispellable": false,
+  "immune_flags": [],
+  "charges": 4,
+  "bonus_damage_per_charge": 15,
+  "notes": "Grants +15/30/45/60 bonus damage (per level) for 4 attacks (charges). Each attack consumes 1 charge. When charges = 0 the effect expires. In engine: duration_turns=4 is the charge count. Dispellable=false matches HoN (it is a permanent state until charges consumed or hero dies). bonus_damage_per_charge is an extension field."
+}

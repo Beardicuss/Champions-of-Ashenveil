@@ -1,0 +1,40 @@
+{
+  "id": "deadwood_willowmaker",
+  "name": "Willowmaker",
+  "description": "Deadwood punches an enemy with his stump arm, dealing massive Physical Damage scaled by the target's Strength, applying a Stun and a tapering slow, and stealing a portion of their Strength.",
+  "source": {
+    "hon_id": "Ability_Deadwood4",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "From hon_reborn_slice.json. Ultimate (slot 4). Damage = 200/400/600 + (target_strength * 0.4 * 21). Stun = State_Stunned_Knockdown, 1500ms. Slow tapering over 5000ms. Grants State_Deadwood_Ability4_Buff to self (40% of target Str) for 7s. Cooldown 100s/80s/60s (3 levels at 6/11/16). Max level 3."
+  },
+  "original": {
+    "cooldown_ms": 100000,
+    "mana_cost": 100,
+    "damage": 200,
+    "cast_range": 150,
+    "radius": null,
+    "duration_ms": 5000,
+    "max_level": 3,
+    "notes_per_level": {
+      "cooldown_ms": [100000, 80000, 60000],
+      "base_damage": [200, 400, 600],
+      "bonus_damage_formula": "target_strength * 0.4 * 21",
+      "stun_ms": 1500,
+      "slow_duration_ms": 5000,
+      "slow_start_pct": 100,
+      "strength_steal_pct": 40,
+      "strength_steal_duration_ms": 7000,
+      "required_level": [6, 11, 16]
+    }
+  },
+  "adapted": {
+    "cooldown_turns": 20,
+    "energy_cost": 100,
+    "damage": 200,
+    "duration_turns": 1,
+    "targeting": "single",
+    "adaptation_reason": "Cooldown: ceil(100s / 5s) = 20 turns (ultimate with very long CD — significant in a card game, needs balance testing). Damage: base 200-600 + bonus based on target Strength (implemented in engine as formula, not flat value). Stun: ceil(1.5s / 5s) = 1 turn. Slow: 1 turn (5s slow → 1 turn). Strength steal: stored as charges on a buff applied to Deadwood. Balance risk: the Strength-scaling bonus damage could be extremely powerful against high-Str heroes — track in test scenario I."
+  },
+  "effects": ["deadwood_willowmaker_stun", "deadwood_willowmaker_slow", "deadwood_strength_sap"]
+}

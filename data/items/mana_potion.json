@@ -1,0 +1,1 @@
+{"id":"mana_potion","name":"Mana Potion","source":{"hon_id":"Item_ManaPotion","version":"Reborn","status":"verified"},"cost":100,"stat_bonuses":{},"ability_ids":["item_mana_potion_use"],"notes":"Consumable. Restores 100 energy immediately."}

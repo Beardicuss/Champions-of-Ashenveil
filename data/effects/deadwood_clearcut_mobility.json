@@ -1,0 +1,15 @@
+{
+  "id": "deadwood_clearcut_mobility",
+  "name": "Clearcutting",
+  "source": { "hon_id": "State_Deadwood_Ability3", "version": "Reborn", "status": "verified" },
+  "status_flags": [],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 2,
+  "can_stack": false,
+  "refreshes": false,
+  "dispellable": true,
+  "immune_flags": ["Slowed"],
+  "grants_free_row_change": true,
+  "notes": "Grants immunity to Slow (immune_flags=[Slowed]) for 2 turns and a free row change on the turn it is applied. Move speed bonus has no direct analogue — dropped. Treewalking dropped (no terrain). immune_flags and grants_free_row_change are extension fields for engine Phase 2."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "deadwood_strength_sap",
+  "name": "Strength Sap",
+  "source": { "hon_id": "State_Deadwood_Ability4_Buff (on Deadwood)", "version": "Reborn", "status": "verified" },
+  "status_flags": [],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 2,
+  "can_stack": false,
+  "refreshes": false,
+  "dispellable": true,
+  "immune_flags": [],
+  "strength_steal_pct": 40,
+  "notes": "Applied to Deadwood (buff), represents 40% of target Strength stolen. 7s duration → ceil(7/5) = 2 turns. In engine: at apply time, calculate 40% of target Str and store as charges (bonus HP and damage for 2 turns). Extension field strength_steal_pct used for engine formula. This means Willowmaker against a high-Str enemy greatly empowers Deadwood."
+}

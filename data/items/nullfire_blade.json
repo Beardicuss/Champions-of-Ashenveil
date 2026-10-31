@@ -1,0 +1,1 @@
+{"id":"nullfire_blade","name":"Nullfire Blade","source":{"hon_id":"Item_NullfireBlade","version":"Reborn","status":"verified"},"cost":2050,"stat_bonuses":{"bonus_damage":20,"bonus_magic_armor":3},"ability_ids":["item_nullfire_burn"],"notes":"+20 damage, +3 magic armor. Attack burns 40 energy."}

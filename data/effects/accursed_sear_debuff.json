@@ -1,0 +1,14 @@
+{
+  "id": "accursed_sear_debuff",
+  "name": "Sear",
+  "source": { "hon_id": "State_Accursed_Ability3_Debuff", "version": "Reborn", "status": "verified" },
+  "status_flags": ["Slowed"],
+  "damage_per_turn": 0,
+  "damage_type": "Magic",
+  "duration_turns": 1,
+  "can_stack": false,
+  "refreshes": true,
+  "dispellable": true,
+  "immune_flags": [],
+  "notes": "Applied by Accursed's attacks and Sear active. 2s duration → ceil(2/5) = 1 turn. 5/10/15/20% move slow (level 1 = 5%). Refreshes on each attack. HoN also triggers Burning Strikes on attackers-of-Seared-target — handled as a separate event trigger in engine."
+}

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/UI/CreepLane.cs" id="1"]
+
+[node name="CreepLane" type="VBoxContainer"]
+script = ExtResource("1")
+custom_minimum_size = Vector2(0, 36)
+
+[node name="Summary" type="Label" parent="."]
+text = "Wave: none"
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 12

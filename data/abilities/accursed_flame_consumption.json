@@ -1,0 +1,36 @@
+{
+  "id": "accursed_flame_consumption",
+  "name": "Flame Consumption",
+  "description": "Accursed surrounds himself with a powerful fire tornado, dispelling debuffs and converting 100% of all incoming damage into Health gained for the duration.",
+  "source": {
+    "hon_id": "Ability_Accursed4",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "From hon_reborn_slice.json. Instant cast (casttime=0). No mana cost. Dispels StatusDebuff and StatusDisable on self. Applies State_Accursed_Ability4 for 3000/4000/5000ms. State converts all damage taken to healing (absorbdamage equivalent). Cooldown 60000ms (flat, all 3 levels). Max level 3, required_level 6/11/16."
+  },
+  "original": {
+    "cooldown_ms": 60000,
+    "mana_cost": 0,
+    "damage": 0,
+    "cast_range": null,
+    "radius": null,
+    "duration_ms": 3000,
+    "max_level": 3,
+    "notes_per_level": {
+      "cooldown_ms": [60000, 60000, 60000],
+      "duration_ms": [3000, 4000, 5000],
+      "damage_converted_to_heal_pct": 100,
+      "dispels_on_cast": ["StatusDebuff", "StatusDisable"],
+      "required_level": [6, 11, 16]
+    }
+  },
+  "adapted": {
+    "cooldown_turns": 12,
+    "energy_cost": 0,
+    "damage": 0,
+    "duration_turns": 1,
+    "targeting": "self",
+    "adaptation_reason": "Cooldown: ceil(60s / 5s) = 12 turns — the longest cooldown in either kit, reflects this is Accursed's panic button. Duration: ceil(3s / 5s) = 1 turn minimum. Energy cost 0 — kept as designed. Dispel on cast: removes all Stun + Debuffs. During the buff turn: all damage received is converted to healing (100% damage-to-heal). This is potentially very strong in the card game since an entire turn of attacks could be nullified — balance risk HIGH. Test scenario I (extreme interactions). Consider duration = 0.5 turn (partial turn) or limit to one attack's worth of conversion."
+  },
+  "effects": ["accursed_flame_consumption_buff"]
+}

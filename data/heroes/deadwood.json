@@ -1,0 +1,47 @@
+{
+  "id": "deadwood",
+  "name": "Deadwood",
+  "source": {
+    "hon_id": "Hero_Deadwood",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "Stats from hon_reborn_slice.json. Verified against research/01_ORIGINAL_ARCHIVES/hon_source_files/hero_roster.json."
+  },
+  "original": {
+    "hon_alias": "deadwood",
+    "primary": "Strength",
+    "str": 25,
+    "str_per_level": 2.7,
+    "agi": 16,
+    "agi_per_level": 1.5,
+    "int": 16,
+    "int_per_level": 1.5,
+    "attack_type": "melee",
+    "attack_range": 150,
+    "dmg_min": 31,
+    "dmg_max": 36,
+    "move_speed": 300,
+    "armor": 0.50,
+    "magic_armor": 5,
+    "health_regen": 1.00,
+    "category": "physical"
+  },
+  "adapted": {
+    "max_hp": 675,
+    "max_energy": 208,
+    "base_damage_min": 31,
+    "base_damage_max": 36,
+    "armor": 0.50,
+    "magic_armor": 5,
+    "hp_regen_per_turn": 5.0,
+    "attack_type": "melee",
+    "row_preference": "front",
+    "adaptation_reason": "MaxHp = 150 (base) + 25 (Str) * 21 (HpPerStr, Reborn verified). MaxEnergy = 0 (base) + 16 (Int) * 13 (MpPerInt). HpRegenPerTurn = 1.00/s * T(5s). Damage values taken directly from HoN (already include primary attribute bonus of Str*1.0). Melee -> front row per spatial model decision."
+  },
+  "ability_ids": [
+    "deadwood_rotten_grasp",
+    "deadwood_uproot",
+    "deadwood_clearcutting",
+    "deadwood_willowmaker"
+  ]
+}

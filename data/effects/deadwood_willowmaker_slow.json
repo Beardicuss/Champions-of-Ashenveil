@@ -1,0 +1,14 @@
+{
+  "id": "deadwood_willowmaker_slow",
+  "name": "Willowmaker — Tapering Slow",
+  "source": { "hon_id": "State_Deadwood_Ability4", "version": "Reborn", "status": "verified" },
+  "status_flags": ["Slowed"],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 1,
+  "can_stack": false,
+  "refreshes": false,
+  "dispellable": true,
+  "immune_flags": [],
+  "notes": "5s tapering slow (100% start → 0% end) → ceil(5/5) = 1 turn. In card game: Slowed for 1 turn (prevents row change, costs extra action if used). Tapering collapsed to flat slow since turns are discrete. Dispellable per HoN allowtransfer=true."
+}

@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://src/UI/HeroProgressionPanel.cs" id="1"]
+
+[node name="ProgressionPanel" type="VBoxContainer"]
+script = ExtResource("1")
+custom_minimum_size = Vector2(0, 140)
+
+[node name="Title" type="Label" parent="."]
+text = "Hero progression"
+theme_override_font_sizes/font_size = 14
+
+[node name="Scroll" type="ScrollContainer" parent="."]
+custom_minimum_size = Vector2(0, 110)
+size_flags_vertical = 3
+horizontal_scroll_mode = 1
+
+[node name="Rows" type="VBoxContainer" parent="Scroll"]
+size_flags_horizontal = 3

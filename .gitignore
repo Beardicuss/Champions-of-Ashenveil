@@ -1,0 +1,36 @@
+# Godot 4 .NET — Champions of Ashenveil
+
+# Godot build / cache
+.godot/
+*.import
+
+# C# build output
+.mono/
+bin/
+obj/
+*.user
+*.suo
+*.vs/
+.vs/
+
+# Rider / VS Code
+.idea/
+.vscode/
+
+# Research data — never ship this
+research/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local exports and logs
+export/
+build/
+dist/
+*.log
+
+# Local credentials and unrelated personal notes
+.env
+.env.*
+docs/Codex_CLI_Cheat_Sheet.md

@@ -1,0 +1,42 @@
+{
+  "id": "empath",
+  "name": "Empath",
+  "source": {
+    "hon_id": "Hero_Empath",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "Ranged support. Int primary. Her ultimate As One is unique — she merges into an ally."
+  },
+  "original": {
+    "hon_alias": "empath",
+    "primary": "Intelligence",
+    "str": 19, "str_per_level": 1.7,
+    "agi": 18, "agi_per_level": 1.5,
+    "int": 24, "int_per_level": 2.5,
+    "attack_type": "ranged",
+    "attack_range": 600,
+    "dmg_min": 22, "dmg_max": 30,
+    "move_speed": 300,
+    "armor": 0.4, "magic_armor": 5,
+    "health_regen": 1.00,
+    "category": "protective"
+  },
+  "adapted": {
+    "max_hp": 549,
+    "max_energy": 312,
+    "base_damage_min": 22,
+    "base_damage_max": 30,
+    "armor": 0.4,
+    "magic_armor": 5.0,
+    "hp_regen_per_turn": 5.0,
+    "attack_type": "ranged",
+    "row_preference": "back",
+    "adaptation_reason": "MaxHp = 150 + 19*21 = 549. MaxEnergy = 0 + 24*13 = 312. Largest energy pool of all 6 heroes — supports her mana-hungry support/healing kit. Ranged → back row. As One (ultimate) adapted as a protective merge buff. Very high Int scaling makes her powerful as the match extends."
+  },
+  "ability_ids": [
+    "empath_essence_link",
+    "empath_illusory_veil",
+    "empath_synergy",
+    "empath_as_one"
+  ]
+}

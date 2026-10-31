@@ -1,0 +1,38 @@
+{
+  "id": "deadwood_uproot",
+  "name": "Uproot",
+  "description": "Deadwood tears a tree from the ground, gaining bonus damage on his next 4 attacks. While holding a tree he can throw it at an enemy, dealing damage and applying a stun and tapering slow.",
+  "source": {
+    "hon_id": "Ability_Deadwood2",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "From hon_reborn_slice.json. Self-cast grants State_Deadwood_Ability2 (permanent until charges gone). Sets charges=4. On final charge, auto-throws (Projectile_Deadwood_Ability2). Throw mode is a modifier[key=deadwood_ihasatree] on this same ability, range 650, cooldown 0."
+  },
+  "original": {
+    "cooldown_ms": 15000,
+    "mana_cost": 20,
+    "damage": null,
+    "cast_range": null,
+    "radius": null,
+    "duration_ms": -1,
+    "max_level": 4,
+    "notes_per_level": {
+      "bonus_damage_per_attack": [15, 30, 45, 60],
+      "charges": 4,
+      "throw_range": 650,
+      "throw_stun_ms": 100,
+      "throw_slow_ms": [1500, 2000, 2500, 3000],
+      "throw_slow_pct": 75,
+      "required_level": [1, 3, 5, 7]
+    }
+  },
+  "adapted": {
+    "cooldown_turns": 3,
+    "energy_cost": 20,
+    "damage": 0,
+    "duration_turns": 4,
+    "targeting": "self",
+    "adaptation_reason": "Cooldown: ceil(15s / 5s) = 3 turns. Duration collapsed to 4 (charges). Self-cast applies the tree-holding buff for 4 attack charges. Throw action: costs no energy, no cooldown — available once tree is held. In card-game terms: this creates a 'holding tree' ActiveEffect with 4 charges; each attack burns a charge and adds bonus damage (15-60 per level). On last charge or as a free action: Throw at one enemy for Stun (1 turn, mini-stun = 0 turns → 1 minimum) + Slow effect."
+  },
+  "effects": ["deadwood_holding_tree"]
+}

@@ -1,0 +1,15 @@
+{
+  "id": "accursed_burning_strikes_buff",
+  "name": "Burning Strikes",
+  "source": { "hon_id": "State_Accursed_Ability3_Buff", "version": "Reborn", "status": "verified" },
+  "status_flags": [],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 1,
+  "can_stack": false,
+  "refreshes": true,
+  "dispellable": true,
+  "immune_flags": [],
+  "attack_speed_bonus": 0.10,
+  "notes": "Applied to allies who attack a Seared target. 4.5s → ceil(4.5/5) = 1 turn. +10/20/30/40% attack speed (level-1 = 10%) + 10% move speed. In card game: attack_speed_bonus translates to +1 bonus attack this turn (threshold mechanic — at 100% bonus = extra attack). 10% bonus at level 1 is minor. attack_speed_bonus is extension field."
+}

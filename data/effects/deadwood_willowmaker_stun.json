@@ -1,0 +1,14 @@
+{
+  "id": "deadwood_willowmaker_stun",
+  "name": "Willowmaker — Knockdown",
+  "source": { "hon_id": "State_Stunned_Knockdown", "version": "Reborn", "status": "verified" },
+  "status_flags": ["Stunned"],
+  "damage_per_turn": 0,
+  "damage_type": "Physical",
+  "duration_turns": 1,
+  "can_stack": false,
+  "refreshes": false,
+  "dispellable": true,
+  "immune_flags": [],
+  "notes": "1.5s stun → ceil(1.5/5) = 1 turn. Stunned prevents all actions (attack, ability, row change). HoN name was State_Stunned_Knockdown — kept as verified. Dispellable per HoN allowtransfer=true."
+}

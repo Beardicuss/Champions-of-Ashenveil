@@ -1,0 +1,1 @@
+{"id":"power_supply","name":"Power Supply","source":{"hon_id":"Item_PowerSupply","version":"Reborn","status":"verified"},"cost":900,"stat_bonuses":{"bonus_energy":200,"bonus_damage":15},"ability_ids":[],"notes":"+200 energy, +15 damage. Great for casters."}

@@ -1,0 +1,42 @@
+{
+  "id": "geomancer",
+  "name": "Geomancer",
+  "source": {
+    "hon_id": "Hero_Geomancer",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "Ranged hero. Only 0 base armor — very squishy. High Int and AoE CC kit."
+  },
+  "original": {
+    "hon_alias": "geomancer",
+    "primary": "Intelligence",
+    "str": 18, "str_per_level": 2.0,
+    "agi": 16, "agi_per_level": 1.2,
+    "int": 22, "int_per_level": 2.8,
+    "attack_type": "ranged",
+    "attack_range": 600,
+    "dmg_min": 25, "dmg_max": 33,
+    "move_speed": 300,
+    "armor": 0, "magic_armor": 5,
+    "health_regen": 1.00,
+    "category": "magic cc"
+  },
+  "adapted": {
+    "max_hp": 528,
+    "max_energy": 286,
+    "base_damage_min": 25,
+    "base_damage_max": 33,
+    "armor": 0.0,
+    "magic_armor": 5.0,
+    "hp_regen_per_turn": 5.0,
+    "attack_type": "ranged",
+    "row_preference": "back",
+    "adaptation_reason": "MaxHp = 150 + 18*21 = 528. MaxEnergy = 0 + 22*13 = 286. Zero armor = takes full physical damage. Ranged → back row (safer position). High energy pool supports his mana-expensive CC kit. Int primary gives bonus damage through Int scaling."
+  },
+  "ability_ids": [
+    "geomancer_dig",
+    "geomancer_earths_grasp",
+    "geomancer_geo_stalk",
+    "geomancer_crystal_field"
+  ]
+}

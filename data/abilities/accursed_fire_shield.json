@@ -1,0 +1,37 @@
+{
+  "id": "accursed_fire_shield",
+  "name": "Fire Shield",
+  "description": "Accursed covers an ally in a shield of flames, dispelling debuffs and stuns, absorbing incoming damage. If the shield breaks, it explodes dealing Magic Damage to nearby enemies.",
+  "source": {
+    "hon_id": "Ability_Accursed2",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "From hon_reborn_slice.json. Dispels StatusDebuff and StatusDisable on cast. Applies State_Accursed_Ability2 for 15s. Shield absorbs 110/140/170/200 post-mitigation damage. On break: Affector_Accursed_Ability2 spawned, AoE 700 radius for 110/140/170/200 Magic damage. Cooldown 18/15/12/9s per level. Mana 100/105/110/115."
+  },
+  "original": {
+    "cooldown_ms": 18000,
+    "mana_cost": 100,
+    "damage": 0,
+    "cast_range": 700,
+    "radius": 700,
+    "duration_ms": 15000,
+    "max_level": 4,
+    "notes_per_level": {
+      "cooldown_ms": [18000, 15000, 12000, 9000],
+      "mana_cost": [100, 105, 110, 115],
+      "shield_absorb": [110, 140, 170, 200],
+      "explosion_damage_magic": [110, 140, 170, 200],
+      "explosion_radius": 700,
+      "required_level": [1, 3, 5, 7]
+    }
+  },
+  "adapted": {
+    "cooldown_turns": 4,
+    "energy_cost": 100,
+    "damage": 0,
+    "duration_turns": 3,
+    "targeting": "single_ally",
+    "adaptation_reason": "Cooldown: ceil(18s / 5s) = 4 turns (level-1 worst case; level-4 = ceil(9/5)=2 turns). Duration: ceil(15s / 5s) = 3 turns. Shield absorb = 110 HP at level 1. Dispel on cast: removes Stun and all Debuffs from target — very powerful, key strategic ability. Explosion on break: adapted as AoE magic hit on all enemies (row model: all enemies in opposite front row). This is a critical defensive ability — Accursed's defining card."
+  },
+  "effects": ["accursed_fire_shield_buff"]
+}

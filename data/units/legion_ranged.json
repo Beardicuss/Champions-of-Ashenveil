@@ -1,0 +1,1 @@
+{"id":"legion_ranged","name":"Legion Ranged","source":{"hon_id":"Unit_LegionRanged","version":"Reborn","status":"verified"},"max_hp":180,"damage_min":14,"damage_max":16,"armor":0.0,"magic_armor":2.0,"attack_type":"ranged","ability_ids":[]}

@@ -1,0 +1,8 @@
+{
+  "id": "swiftblade_blade_frenzy",
+  "name": "Blade Frenzy",
+  "source": { "hon_id": "Ability_Swiftblade1", "version": "Reborn", "status": "verified" },
+  "original": { "cooldown_ms": [33000, 28000, 23000, 18000], "mana_cost": 110, "damage_per_second": [75, 95, 115, 135], "duration_ms": 5000, "max_level": 4, "action": "target_self", "notes": "Dispels debuffs on cast. Magic Immunity. AoE 250 radius Magic DoT." },
+  "adapted": { "cooldown_turns": 7, "energy_cost": 110, "damage": 375, "duration_turns": 1, "targeting": "self_area", "adaptation_reason": "CD ceil(33s/5)=7. DoT 75/s × 5s=375 total magic damage to all enemies (level 1). Dispel on cast. Magic immunity = MagicImmune buff for 1 turn." },
+  "effects": ["swiftblade_blade_frenzy_buff"]
+}

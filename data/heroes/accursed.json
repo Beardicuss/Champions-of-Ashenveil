@@ -1,0 +1,47 @@
+{
+  "id": "accursed",
+  "name": "Accursed",
+  "source": {
+    "hon_id": "Hero_Accursed",
+    "version": "Reborn (verified from client files)",
+    "status": "verified",
+    "notes": "Stats from hon_reborn_slice.json. Verified against hon_reborn_heroes.csv and hero_roster.json. Primary is Strength despite having highest base Int — confirmed from primaryattribute field."
+  },
+  "original": {
+    "hon_alias": "accursed",
+    "primary": "Strength",
+    "str": 23,
+    "str_per_level": 2.7,
+    "agi": 17,
+    "agi_per_level": 1.5,
+    "int": 26,
+    "int_per_level": 2.0,
+    "attack_type": "melee",
+    "attack_range": 150,
+    "dmg_min": 31,
+    "dmg_max": 33,
+    "move_speed": 300,
+    "armor": 1.12,
+    "magic_armor": 5,
+    "health_regen": 1.00,
+    "category": "tank protective"
+  },
+  "adapted": {
+    "max_hp": 633,
+    "max_energy": 338,
+    "base_damage_min": 31,
+    "base_damage_max": 33,
+    "armor": 1.12,
+    "magic_armor": 5,
+    "hp_regen_per_turn": 5.0,
+    "attack_type": "melee",
+    "row_preference": "front",
+    "adaptation_reason": "MaxHp = 150 (base) + 23 (Str) * 21 (HpPerStr) = 633. MaxEnergy = 0 (base) + 26 (Int) * 13 (MpPerInt) = 338 — Accursed has very high Int which gives him a large energy pool for his support abilities. HpRegenPerTurn = 1.00/s * T(5s) = 5. Armor 1.12 taken directly (higher than Deadwood's 0.5, reflects tank role). Melee -> front row."
+  },
+  "ability_ids": [
+    "accursed_cauterize",
+    "accursed_fire_shield",
+    "accursed_sear",
+    "accursed_flame_consumption"
+  ]
+}
